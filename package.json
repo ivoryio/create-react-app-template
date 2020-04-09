@@ -1,0 +1,10 @@
+{
+  "name": "@ivoryio/cra-template-ivory",
+  "version": "1.0.0",
+  "description": "An Ivory custom template for create-react-app",
+  "main": "index.js",
+  "repository": "git@github.com:ivoryio/create-react-app-template.git",
+  "author": "Lucian Vasiliu <lucian@thinslices.com>",
+  "license": "GNU GPLv3",
+  "private": false
+}

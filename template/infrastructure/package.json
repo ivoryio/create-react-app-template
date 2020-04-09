@@ -1,0 +1,23 @@
+{
+  "name": "PROJECT_NAME",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "rm -rf ./build && tsc",
+    "nuke": "cdk destroy --app 'node build/app.js' PROJECT_NAME --output 'build/cdk.out'",
+    "cdk:diff": "yarn cdk:synth && cdk diff --app 'node build/app.js' --profile ait",
+    "deploy": "yarn build && cdk deploy --app 'node build/app.js' PROJECT_NAME --output 'build/cdk.out' --strict --profile ait",
+    "cdk:synth": "yarn build && cdk synth --app 'node build/app.js' --output 'build/cdk.out' --strict --profile ait"
+  },
+  "devDependencies": {
+    "@aws-cdk/aws-amplify": "^1.32.0",
+    "@aws-cdk/aws-codecommit": "^1.32.0",
+    "@aws-cdk/core": "^1.32.0",
+    "@types/node": "^13.11.1",
+    "@types/npm": "^2.0.31",
+    "@types/uuid": "^7.0.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
+}
