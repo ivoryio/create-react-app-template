@@ -1,6 +1,6 @@
 import { Stack, StackProps, Construct } from '@aws-cdk/core'
 import { Repository } from '@aws-cdk/aws-codecommit'
-import { App as AmplifyApp, CodeCommitSourceCodeProvider } from '@aws-cdk/aws-amplify'
+import { App as AmplifyApp, CodeCommitSourceCodeProvider, RedirectStatus } from '@aws-cdk/aws-amplify'
 
 export interface IAmplifyStackProps extends StackProps {
   projectName: string
@@ -35,6 +35,11 @@ export class AmplifyStack extends Stack {
       sourceCodeProvider: new CodeCommitSourceCodeProvider({ repository }),
     })
     app.addBranch('master')
+    app.addCustomRule({
+      source: '</^[^.]+$|.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
+      target: '/index.html',
+      status: RedirectStatus.REWRITE,
+    })
 
     return app
   }
