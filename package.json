@@ -3,8 +3,22 @@
   "version": "1.0.0",
   "description": "An Ivory custom template for create-react-app",
   "main": "index.js",
-  "repository": "git@github.com:ivoryio/create-react-app-template.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ivoryio/create-react-app-template.git"
+  },
   "author": "Lucian Vasiliu <lucian@thinslices.com>",
-  "license": "GNU GPLv3",
-  "private": false
+  "license": "GPL-3.0-or-later",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/ivoryio/create-react-app-template/issues"
+  },
+  "homepage": "https://github.com/ivoryio/create-react-app-template#readme",
+  "keywords": [
+    "cra",
+    "create-react-app",
+    "template",
+    "react",
+    "cra-template"
+  ]
 }
