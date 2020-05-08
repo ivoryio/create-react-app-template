@@ -1,7 +1,8 @@
-import { Stack, StackProps, Construct } from '@aws-cdk/core'
-import { Repository } from '@aws-cdk/aws-codecommit'
+import { join } from 'path'
 import { BuildSpec } from '@aws-cdk/aws-codebuild'
-import { App as AmplifyApp, CodeCommitSourceCodeProvider, RedirectStatus, CustomRule } from '@aws-cdk/aws-amplify'
+import { Repository } from '@aws-cdk/aws-codecommit'
+import { Stack, StackProps, Construct } from '@aws-cdk/core'
+import { App as AmplifyApp, CodeCommitSourceCodeProvider, CustomRule } from '@aws-cdk/aws-amplify'
 
 export interface IAmplifyStackProps extends StackProps {
   projectName: string
@@ -43,7 +44,6 @@ export class AmplifyStack extends Stack {
   private createAmplifyApp(projectName: string, repository: Repository) {
     const app = new AmplifyApp(this, projectName, {
       sourceCodeProvider: new CodeCommitSourceCodeProvider({ repository }),
-      buildSpec: BuildSpec.fromSourceFilename('./build.amplify.yml'),
       environmentVariables: {
         USER_DISABLE_TESTS: 'false',
       },

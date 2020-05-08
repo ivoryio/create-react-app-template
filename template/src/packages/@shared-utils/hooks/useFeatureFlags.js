@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { _checkObjEqual } from "../funcs"
+import { _checkObjEqual } from '../funcs'
 
-const INITIAL_STATE = process.env.REACT_APP_NODE_ENV === "development" || false
+const INITIAL_STATE = process.env.REACT_APP_NODE_ENV === 'development' || false
 
 export const useFeatureFlags = initialState => {
   const [flags, setFlags] = useState({
     ...initialState,
-    organizationTeamsFlag: INITIAL_STATE
+    organizationTeamsFlag: INITIAL_STATE,
   })
   const isInitialMount = useRef(true)
 
@@ -17,7 +17,7 @@ export const useFeatureFlags = initialState => {
         const updatedFlags = Object.keys(flags).reduce(
           (acc, curr) => ({
             ...acc,
-            [curr]: localStorage.getItem(curr) !== null
+            [curr]: localStorage.getItem(curr) !== null,
           }),
           {}
         )
@@ -31,27 +31,24 @@ export const useFeatureFlags = initialState => {
     updatedFlag => {
       setFlags(prevFlags => ({
         ...prevFlags,
-        ...updatedFlag
+        ...updatedFlag,
       }))
     },
     [setFlags]
   )
 
   useEffect(() => {
-    window.addEventListener("storage", watchStorage)
+    window.addEventListener('storage', watchStorage)
     return () => {
-      window.removeEventListener("storage", watchStorage)
+      window.removeEventListener('storage', watchStorage)
     }
 
-    function watchStorage (ev) {
+    function watchStorage(ev) {
       if (ev.key) {
-        const flagValues = ["true", "false"]
+        const flagValues = ['true', 'false']
         updateFlag({
           [ev.key]:
-            ev.newValue &&
-            flagValues.some(val => val === ev.newValue.toLowerCase())
-              ? JSON.parse(ev.newValue)
-              : false
+            ev.newValue && flagValues.some(val => val === ev.newValue.toLowerCase()) ? JSON.parse(ev.newValue) : false,
         })
       }
     }
