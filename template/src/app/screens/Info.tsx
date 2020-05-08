@@ -1,6 +1,5 @@
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
-import { Button } from '@ivoryio/kogaio'
 
 export const Info: React.FC<RouteComponentProps> = () => {
   return (
@@ -27,7 +26,7 @@ export const Info: React.FC<RouteComponentProps> = () => {
           Try to stay as still as possible
         </li>
       </ul>
-      <Button>Hello</Button>
+      <button>Hello</button>
     </div>
   )
 }

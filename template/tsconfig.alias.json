@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@kogaio": [
-        "../node_modules/@ivoryio/kogaio"
-      ],
-      "@shared-utils": [
-        "./packages/@shared-utils"
-      ]
+      "@shared-utils": ["./packages/@shared-utils"]
     }
   }
 }
