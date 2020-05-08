@@ -1,5 +1,6 @@
 {
   "package": {
+    "private": true,
     "scripts": {
       "start": "craco start",
       "build": "craco build",
@@ -27,6 +28,8 @@
       "@types/react-dom": "^16.9.0",
       "@types/styled-components": "^5.0.1",
       "craco-alias": "^2.1.1",
+      "cypress": "^4.5.0",
+      "eslint-plugin-cypress": "^2.10.3",
       "husky": "^4.2.3",
       "prettier": "^2.0.4",
       "pretty-quick": "^2.0.1"
@@ -41,7 +44,11 @@
     },
     "browserslist": {
       "production": [">0.2%", "not dead", "not op_mini all"],
-      "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
     }
   }
 }
