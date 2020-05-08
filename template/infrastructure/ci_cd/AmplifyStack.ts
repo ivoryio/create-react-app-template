@@ -1,6 +1,7 @@
 import { Stack, StackProps, Construct } from '@aws-cdk/core'
 import { Repository } from '@aws-cdk/aws-codecommit'
-import { App as AmplifyApp, CodeCommitSourceCodeProvider, RedirectStatus } from '@aws-cdk/aws-amplify'
+import { BuildSpec } from '@aws-cdk/aws-codebuild'
+import { App as AmplifyApp, CodeCommitSourceCodeProvider, RedirectStatus, CustomRule } from '@aws-cdk/aws-amplify'
 
 export interface IAmplifyStackProps extends StackProps {
   projectName: string
@@ -19,6 +20,15 @@ export class AmplifyStack extends Stack {
     this.createAmplifyApp(projectName, repository)
   }
 
+  //// If the code is hosted in GitHub, you can use this function instead of creating codecommit repo
+  // private makeSourceCodeProvider() {
+  //   return new GitHubSourceCodeProvider({
+  //     owner: 'owner',
+  //     repository: 'repo',
+  //     oauthToken: SecretValue.plainText(process.env.GITHUB_SECRET || ''),
+  //   })
+  // }
+
   private createCodeRepository(projectName: string) {
     const repositoryName = `${projectName}-web-spa-repo`.toLowerCase()
 
@@ -33,13 +43,13 @@ export class AmplifyStack extends Stack {
   private createAmplifyApp(projectName: string, repository: Repository) {
     const app = new AmplifyApp(this, projectName, {
       sourceCodeProvider: new CodeCommitSourceCodeProvider({ repository }),
+      buildSpec: BuildSpec.fromSourceFilename('./build.amplify.yml'),
+      environmentVariables: {
+        USER_DISABLE_TESTS: 'false',
+      },
     })
     app.addBranch('master')
-    app.addCustomRule({
-      source: '</^[^.]+$|.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
-      target: '/index.html',
-      status: RedirectStatus.REWRITE,
-    })
+    app.addCustomRule(CustomRule.SINGLE_PAGE_APPLICATION_REDIRECT)
 
     return app
   }
