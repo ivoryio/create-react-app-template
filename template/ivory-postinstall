@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PROJECT_NAME=$(grep '"name"' package.json | sed 's/^[ ]*"name": "\(.*\)",$/\1/')
+echo "-==--==--==--==--==-"
+echo "Please enter the name of the AWS profile to use"
+read AWS_PROFILE
+
+sed -i "" "s/PROJECT_NAME/$PROJECT_NAME/g" public/index.html public/manifest.json infrastructure/ci_cd/app.ts infrastructure/package.json
+sed -i "" "s/AWS_PROFILE/$AWS_PROFILE/g" infrastructure/package.json
+(cd infrastructure && yarn)
+
+sed -i '' '/"postinstall"/d' ./package.json
+rm -f "./$0"

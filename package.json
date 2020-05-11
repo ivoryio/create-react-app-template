@@ -1,5 +1,5 @@
 {
-  "name": "@ivoryio/cra-template-ivory",
+  "name": "@ivoryio/cra-template",
   "version": "1.0.0",
   "description": "An Ivory custom template for create-react-app",
   "main": "template.json",
