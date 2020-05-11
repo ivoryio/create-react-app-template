@@ -3,7 +3,7 @@
 This is the official @ivoryio create-react-app template 
 
 Run the following command to create a new project based on this template:
-`yarn create react-app ivory-test --template @ivoryio`
+`yarn create react-app --template @ivoryio <project-name>`
 
 What this template has to offer:
 * infrastructure-as-code for creating a AWS Codecommit repo and an Amplify app (which offers CI/CD and hosting)

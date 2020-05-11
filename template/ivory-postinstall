@@ -10,4 +10,5 @@ sed -i "" "s/AWS_PROFILE/$AWS_PROFILE/g" infrastructure/package.json
 (cd infrastructure && yarn)
 
 sed -i '' '/"postinstall"/d' ./package.json
+sed -i '' 's/"eject": "react-scripts eject",/"eject": "react-scripts eject"/' ./package.json
 rm -f "./$0"
