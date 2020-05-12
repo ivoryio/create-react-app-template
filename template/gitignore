@@ -10,6 +10,7 @@ node_modules
 /build
 
 # misc
+src/locales/i18nKeys.ts
 .DS_Store
 .env.local
 .env.development.local

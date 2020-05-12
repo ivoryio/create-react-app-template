@@ -1,4 +1,10 @@
 import React from 'react'
 import { Router } from '@reach/router'
 
-export const AppRouter = () => <Router></Router>
+import { HomeScreen } from './HomeScreen'
+
+export const AppRouter = () => (
+  <Router>
+    <HomeScreen default />
+  </Router>
+)

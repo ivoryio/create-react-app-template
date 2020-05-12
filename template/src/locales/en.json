@@ -1,0 +1,11 @@
+{
+  "general": {
+    "showToast": "Show toast"
+  },
+  "home": {
+    "hello": "Hello",
+    "introduction": "We're happy to introduce you to the features of {{project}}",
+    "topFeature": "Here is our top feature",
+    "topFeature_plural": "Here are our top {{count}} features"
+  }
+}
