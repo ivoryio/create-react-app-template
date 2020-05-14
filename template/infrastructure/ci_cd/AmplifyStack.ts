@@ -42,7 +42,7 @@ export class AmplifyStack extends Stack {
   }
 
   private createAmplifyApp(projectName: string, repository: Repository) {
-    const app = new AmplifyApp(this, projectName, {
+    const app = new AmplifyApp(this, `${projectName}-spa`, {
       sourceCodeProvider: new CodeCommitSourceCodeProvider({ repository }),
       environmentVariables: {
         USER_DISABLE_TESTS: 'false',
