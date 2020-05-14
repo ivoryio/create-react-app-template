@@ -1,6 +1,7 @@
 {
   "general": {
-    "showToast": "Show toast"
+    "showToast": "Show toast",
+    "infoToast": "This is an info toast"
   },
   "home": {
     "hello": "Hello",

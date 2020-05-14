@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import { Root } from 'app/Root'
 import * as serviceWorker from './serviceWorker'
-import { initializeTranslations } from 'utils/i18n'
+import { initializeTranslations } from 'locales/i18n'
 
 initializeTranslations()
 

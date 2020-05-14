@@ -12,6 +12,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+### `yarn i18n`
+
+Generates an object that maps all of your translation keys.
+Should be run after every update of the main locale file ('en.json' by default)
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
