@@ -15,10 +15,15 @@ export const HomeScreen: React.FC<RouteComponentProps> = () => {
     <Container>
       <strong>{t(i18nKeys.home.hello)}</strong>
       <div>{t(i18nKeys.home.introduction, { replace: { project } })}</div>
-      <div>{t(i18nKeys.home.topFeature, { count: 1 })}</div>
-      * UI, components and theming
-      <br />* i18n
-      <Button onClick={() => showToast(t(i18nKeys.general.infoToast))}>{t(i18nKeys.general.showToast)}</Button>
+      <div>{t(i18nKeys.home.topFeature, { count: 3 })}</div>
+      <ul>
+        <li>{t(i18nKeys.features.ui)}</li>
+        <li>{t(i18nKeys.features.i18n)}</li>
+        <li>{t(i18nKeys.features.codeQuality)}</li>
+      </ul>
+      <Button onClick={() => showToast(t(i18nKeys.general.infoToast))}>
+        {t(i18nKeys.general.showToast)}
+      </Button>
       <Toast />
     </Container>
   )

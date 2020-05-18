@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export const useDebounce = (fn = (...args: any[]) => {}, ms = 0, args = []) => {
+export const useDebounce = (fn: (...args: any[]) => void, ms = 0, args = []) => {
   useUpdateEffect(() => {
     const handle = setTimeout(() => fn(args), ms)
 
@@ -10,7 +10,7 @@ export const useDebounce = (fn = (...args: any[]) => {}, ms = 0, args = []) => {
   }, args)
 }
 
-const useUpdateEffect = (effect: (...args: any[]) => any, deps: any) => {
+function useUpdateEffect(effect: React.EffectCallback, deps: React.DependencyList) {
   const isInitialMount = useRef(true)
 
   useEffect(() => {

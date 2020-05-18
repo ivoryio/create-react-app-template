@@ -15,7 +15,7 @@ export { t, i18nKeys, initializeTranslations, setLanguage }
  * @param options specify a `defaultValue` or a `count` for the translation
  * or a `replace` dictionary
  */
-const t = (key: string, options?: TranslationOptions): string => {
+function t(key: string, options?: TranslationOptions): string {
   if (!options) {
     return I18n.get(key)
   }
@@ -33,16 +33,21 @@ const t = (key: string, options?: TranslationOptions): string => {
     return val
   }
 
-  return Object.keys(replace).reduce<string>((prev, key) => prev.replace(`{{${key}}}`, replace[key]), val)
+  return Object.keys(replace).reduce<string>(
+    (prev, key) => prev.replace(`{{${key}}}`, replace[key]),
+    val
+  )
 }
 
-const initializeTranslations = () => {
+function initializeTranslations() {
   I18n.putVocabularies({
     en: flatten(en),
   })
 }
 
-const setLanguage = (lang: string) => I18n.setLanguage(lang)
+function setLanguage(lang: string) {
+  I18n.setLanguage(lang)
+}
 
 interface TranslationOptions {
   count?: number
@@ -54,7 +59,7 @@ interface InterpolationOptions {
   [key: string]: string
 }
 
-const flatten = (data: JsonTranslations) => {
+function flatten(data: JsonTranslations) {
   const result: FlatTranslations = {}
   flattenLevel(data, '')
   return result
@@ -64,7 +69,7 @@ const flatten = (data: JsonTranslations) => {
       result[prop] = level
       return
     }
-    for (var p in level) {
+    for (const p in level) {
       flattenLevel(level[p], prop ? prop + '.' + p : p)
     }
   }

@@ -25,7 +25,12 @@ export const Toast: React.FC<ToastProps> = ({
   },
   autoHideDuration = 5000,
 }: ToastProps) => (
-  <Snackbar anchorOrigin={anchorOrigin} open={isOpen} autoHideDuration={autoHideDuration} onClose={onClose}>
+  <Snackbar
+    open={isOpen}
+    onClose={onClose}
+    anchorOrigin={anchorOrigin}
+    autoHideDuration={autoHideDuration}
+  >
     <Alert variant='filled' onClose={onClose} severity={variant} action={action}>
       {content}
     </Alert>

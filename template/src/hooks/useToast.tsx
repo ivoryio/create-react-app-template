@@ -3,12 +3,15 @@ import { Toast as ToastComponent, ToastProps } from 'app/components/Toast'
 
 interface ToastState {
   isOpen: boolean
-  message?: string
+  message: string
   variant?: ToastProps['variant']
 }
 
-export const useToast = (delay = 4000, onClose?: ToastProps['onClose']) => {
-  const [{ isOpen, variant, message }, setProps] = useState<ToastState>({ isOpen: false })
+export const useToast = (delay = 5000, onClose?: ToastProps['onClose']) => {
+  const [{ isOpen, variant, message }, setProps] = useState<ToastState>({
+    isOpen: false,
+    message: '',
+  })
 
   const showToast = (message: string, variant?: ToastProps['variant']) => {
     setProps({ message, variant, isOpen: true })
@@ -18,13 +21,22 @@ export const useToast = (delay = 4000, onClose?: ToastProps['onClose']) => {
     if (reason === 'clickaway') {
       return
     }
-    setProps({ isOpen: false })
+    setProps({ isOpen: false, message: '' })
 
     if (typeof onClose === 'function') onClose(event, reason)
   }
 
-  const Toast = (props: Pick<ToastProps, 'action' | 'anchorOrigin' | 'className'>) => (
-    <ToastComponent {...props} content={message!} variant={variant} onClose={_onClose} isOpen={isOpen} />
+  const Toast = (
+    props: Pick<ToastProps, 'action' | 'anchorOrigin' | 'className' | 'autoHideDuration'>
+  ) => (
+    <ToastComponent
+      autoHideDuration={delay}
+      {...props}
+      content={message}
+      variant={variant}
+      onClose={_onClose}
+      isOpen={isOpen}
+    />
   )
 
   return {

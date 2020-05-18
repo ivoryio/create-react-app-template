@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import 'styled-components'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'

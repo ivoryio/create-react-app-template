@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/camelcase
 import { unstable_createMuiStrictModeTheme, createMuiTheme, ThemeOptions } from '@material-ui/core'
 
 /**
@@ -26,4 +27,6 @@ const appTheme: ThemeOptions = {
 }
 
 const isProduction = process.env.NODE_ENV && process.env.NODE_ENV === 'production'
-export const theme = isProduction ? createMuiTheme(appTheme) : unstable_createMuiStrictModeTheme(appTheme)
+export const theme = isProduction
+  ? createMuiTheme(appTheme)
+  : unstable_createMuiStrictModeTheme(appTheme)
