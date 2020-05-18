@@ -7,7 +7,9 @@
       "test": "craco test",
       "eject": "react-scripts eject",
       "lint": "eslint './src/**/*.{ts,tsx}'",
-      "i18n": "node src/locales/flattenKeys.js"
+      "i18n": "node src/locales/flattenKeys.js",
+      "styleguide": "styleguidist server --open",
+      "styleguide:build": "styleguidist build"
     },
     "dependencies": {
       "@aws-amplify/core": "^3.2.6",
@@ -34,6 +36,7 @@
       "husky": "^4.2.5",
       "prettier": "^2.0.5",
       "pretty-quick": "^2.0.1",
+      "react-styleguidist": "^11.0.6",
       "styled-components": "^5.1.0",
       "typescript": "~3.8.3"
     },
