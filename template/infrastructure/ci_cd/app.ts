@@ -5,7 +5,7 @@ const projectName = 'PROJECT_NAME'
 
 const app = new App()
 
-new AmplifyStack(app, `${projectName}-stack`, {
+new AmplifyStack(app, `${projectName}`, {
   projectName,
   tags: {
     project: projectName,

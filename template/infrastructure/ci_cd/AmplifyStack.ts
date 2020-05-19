@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { BuildSpec } from '@aws-cdk/aws-codebuild'
 import { Repository } from '@aws-cdk/aws-codecommit'
-import { Stack, StackProps, Construct, SecretValue } from '@aws-cdk/core'
+import { Stack, StackProps, Construct, SecretValue, CfnOutput } from '@aws-cdk/core'
 import {
   App as AmplifyApp,
   CustomRule,
@@ -26,7 +26,12 @@ export class AmplifyStack extends Stack {
     const { projectName } = props
 
     const provider = this.makeSourceCodeProvider(projectName, 'GIT_PROVIDER')
-    this.createAmplifyApp(projectName, provider)
+    const app = this.createAmplifyApp(projectName, provider)
+
+    new CfnOutput(this, `${id}-output`, {
+      value: app.appId,
+      exportName: 'amplify-app-id',
+    })
   }
 
   private makeSourceCodeProvider(projectName: string, gitPlatform: GitPlatform) {
@@ -41,7 +46,7 @@ export class AmplifyStack extends Stack {
           oauthToken: SecretValue.plainText(process.env.GITHUB_SECRET || ''),
         })
       default:
-        return null
+        return
     }
   }
 
@@ -56,7 +61,7 @@ export class AmplifyStack extends Stack {
     return new Repository(this, repositoryName, props)
   }
 
-  private createAmplifyApp(projectName: string, sourceCodeProvider: ISourceCodeProvider) {
+  private createAmplifyApp(projectName: string, sourceCodeProvider?: ISourceCodeProvider) {
     const app = new AmplifyApp(this, `${projectName}-spa`, {
       sourceCodeProvider,
       environmentVariables: {

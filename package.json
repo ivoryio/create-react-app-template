@@ -1,6 +1,6 @@
 {
   "name": "@ivoryio/cra-template",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.5",
   "description": "An Ivory custom template for create-react-app",
   "main": "template.json",
   "repository": {
