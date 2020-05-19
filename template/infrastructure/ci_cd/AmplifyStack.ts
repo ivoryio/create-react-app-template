@@ -1,8 +1,16 @@
 import { join } from 'path'
 import { BuildSpec } from '@aws-cdk/aws-codebuild'
 import { Repository } from '@aws-cdk/aws-codecommit'
-import { Stack, StackProps, Construct } from '@aws-cdk/core'
-import { App as AmplifyApp, CodeCommitSourceCodeProvider, CustomRule } from '@aws-cdk/aws-amplify'
+import { Stack, StackProps, Construct, SecretValue } from '@aws-cdk/core'
+import {
+  App as AmplifyApp,
+  CustomRule,
+  ISourceCodeProvider,
+  GitHubSourceCodeProvider,
+  CodeCommitSourceCodeProvider,
+} from '@aws-cdk/aws-amplify'
+
+type GitPlatform = 'codecommit' | 'github' | 'other'
 
 export interface IAmplifyStackProps extends StackProps {
   projectName: string
@@ -17,18 +25,25 @@ export class AmplifyStack extends Stack {
 
     const { projectName } = props
 
-    const repository = this.createCodeRepository(projectName)
-    this.createAmplifyApp(projectName, repository)
+    const provider = this.makeSourceCodeProvider(projectName, 'GIT_PROVIDER')
+    this.createAmplifyApp(projectName, provider)
   }
 
-  //// If the code is hosted in GitHub, you can use this function instead of creating codecommit repo
-  // private makeSourceCodeProvider() {
-  //   return new GitHubSourceCodeProvider({
-  //     owner: 'owner',
-  //     repository: 'repo',
-  //     oauthToken: SecretValue.plainText(process.env.GITHUB_SECRET || ''),
-  //   })
-  // }
+  private makeSourceCodeProvider(projectName: string, gitPlatform: GitPlatform) {
+    switch (gitPlatform) {
+      case 'codecommit':
+        const repository = this.createCodeRepository(projectName)
+        return new CodeCommitSourceCodeProvider({ repository })
+      case 'github':
+        return new GitHubSourceCodeProvider({
+          owner: 'GITHUB_OWNER',
+          repository: 'GITHUB_REPO',
+          oauthToken: SecretValue.plainText(process.env.GITHUB_SECRET || ''),
+        })
+      default:
+        return null
+    }
+  }
 
   private createCodeRepository(projectName: string) {
     const repositoryName = `${projectName}-web-spa-repo`.toLowerCase()
@@ -41,9 +56,9 @@ export class AmplifyStack extends Stack {
     return new Repository(this, repositoryName, props)
   }
 
-  private createAmplifyApp(projectName: string, repository: Repository) {
+  private createAmplifyApp(projectName: string, sourceCodeProvider: ISourceCodeProvider) {
     const app = new AmplifyApp(this, `${projectName}-spa`, {
-      sourceCodeProvider: new CodeCommitSourceCodeProvider({ repository }),
+      sourceCodeProvider,
       environmentVariables: {
         USER_DISABLE_TESTS: 'false',
       },
