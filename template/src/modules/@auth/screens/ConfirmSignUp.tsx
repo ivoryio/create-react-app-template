@@ -26,7 +26,6 @@ export const ConfirmSignUp: React.FC = () => {
   const onSubmit = async ({ code }: ConfirmSignUpForm): Promise<void> => {
     try {
       await confirm(code)
-      showNotification(authKeys.confirmSignUp.success, 'success')
     } catch (error) {
       const content = t(`auth.confirmSignUp.errors.${error.code}`, {
         defaultValue: error.message,
