@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { Button, Grid, TextField, Container } from '@material-ui/core'
+import { Grid, TextField, Container } from '@material-ui/core'
 import { useForm, Controller } from 'react-hook-form'
 
 import { t, i18nKeys } from 'locales/i18n'
 import { useToast } from 'hooks/useToast'
 
+import { Button } from 'app/components'
 import { useConfirmSignUp } from '../hooks'
 import { FormHeader, FormFooter, ChangeAuthStateLink } from '../components'
 
@@ -53,7 +54,7 @@ export const ConfirmSignUp: React.FC = () => {
         />
 
         <FormFooter>
-          <Button type='submit' fullWidth variant='contained' color='primary'>
+          <Button type='submit' fullWidth>
             {t(authKeys.confirmSignUp.actions.confirm)}
           </Button>
           <Grid container>

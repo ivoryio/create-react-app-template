@@ -12,13 +12,13 @@
     "cdk:synth": "yarn build && cdk synth --app 'node build/app.js' --output 'build/cdk.out' --strict --profile AWS_PROFILE"
   },
   "devDependencies": {
-    "@aws-cdk/aws-amplify": "^1.39.0",
-    "@aws-cdk/aws-codecommit": "^1.39.0",
-    "@aws-cdk/core": "^1.39.0",
+    "@aws-cdk/aws-amplify": "^1.41.0",
+    "@aws-cdk/aws-codecommit": "^1.41.0",
+    "@aws-cdk/core": "^1.41.0",
     "@types/node": "^13.11.1",
     "@types/npm": "^2.0.31",
     "@types/uuid": "^7.0.2",
-    "aws-cdk": "^1.39.0",
+    "aws-cdk": "^1.41.0",
     "typescript": "^3.8.3"
   },
   "dependencies": {}

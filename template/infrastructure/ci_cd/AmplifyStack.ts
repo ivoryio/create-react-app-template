@@ -1,4 +1,3 @@
-import { join } from 'path'
 import { BuildSpec } from '@aws-cdk/aws-codebuild'
 import { Repository } from '@aws-cdk/aws-codecommit'
 import { Stack, StackProps, Construct, SecretValue, CfnOutput } from '@aws-cdk/core'
@@ -67,6 +66,17 @@ export class AmplifyStack extends Stack {
       environmentVariables: {
         USER_DISABLE_TESTS: 'false',
       },
+      buildSpec: BuildSpec.fromObject({
+        version: '1.0',
+        frontend: {
+          phases: {
+            build: {
+              commands: ['# this config is needed by amplify, but it is not used'],
+            },
+          },
+        },
+        test: {},
+      }),
     })
     app.addBranch('master')
     app.addCustomRule(CustomRule.SINGLE_PAGE_APPLICATION_REDIRECT)
