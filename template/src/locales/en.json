@@ -56,6 +56,16 @@
         "backToSignIn": "Back to sign in",
         "resend": "Resend code"
       }
+    },
+    "forgotPassword": {
+      "headerRequest": "Forgot password?",
+      "headerReset": "Reset your password",
+      "errors": {},
+      "actions": {
+        "sendCode": "Send code",
+        "resendCode": "Resend code",
+        "submit": "Save"
+      }
     }
   }
 }
