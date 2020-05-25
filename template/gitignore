@@ -7,7 +7,7 @@ node_modules
 /coverage
 
 # production
-/build
+build
 
 # misc
 src/locales/i18nKeys.ts
