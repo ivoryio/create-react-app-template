@@ -3,6 +3,7 @@ import { navigate } from '@reach/router'
 import { ConsoleLogger } from '@aws-amplify/core'
 
 import { useAuthContext } from '.'
+import { getUserData } from './getUserData'
 
 const logger = new ConsoleLogger('useSignIn')
 
@@ -35,10 +36,7 @@ export const useSignIn = (
         //   logger.debug('TOTP setup', user.challengeParam)
         //   handleStateChange('TOTPSetup', user)
       } else {
-        handleStateChange('signedIn', {
-          username: user.username,
-          email: user.attributes.email,
-        })
+        handleStateChange('signedIn', getUserData(user))
         navigate(postSignInRoute)
       }
     } catch (error) {

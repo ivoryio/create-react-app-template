@@ -3,6 +3,7 @@ import { HubCapsule } from '@aws-amplify/core/lib/Hub'
 import { Hub, ConsoleLogger } from '@aws-amplify/core'
 import { useState, useCallback, useEffect } from 'react'
 
+import { getUserData } from './getUserData'
 import { AuthData, AuthState, AuthContextProps, ValidAuthState } from '../contracts'
 
 const logger = new ConsoleLogger('useAuth')
@@ -27,7 +28,7 @@ export const useAuth = (): AuthContextProps => {
     const checkUser = async (): Promise<void> => {
       try {
         const user = await Auth.currentAuthenticatedUser()
-        handleStateChange('signedIn', { username: user.username, email: user.attributes.email })
+        handleStateChange('signedIn', getUserData(user))
       } catch (error) {
         handleStateChange('signIn')
       }

@@ -2,7 +2,7 @@ import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 
 import { useAuthContext } from './hooks'
-import { SignIn, SignUp, ConfirmSignUp, ForgotPassword } from './screens'
+import { SignIn, SignUp, ConfirmSignUp, ForgotPassword, RequireNewPassword } from './screens'
 
 export const AuthenticationScreen: React.FC<RouteComponentProps> = () => {
   const { authState } = useAuthContext()
@@ -14,6 +14,8 @@ export const AuthenticationScreen: React.FC<RouteComponentProps> = () => {
       return <ConfirmSignUp />
     case 'forgotPassword':
       return <ForgotPassword />
+    case 'requireNewPassword':
+      return <RequireNewPassword />
     default:
       return <SignIn />
   }
