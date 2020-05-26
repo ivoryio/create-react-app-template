@@ -30,7 +30,7 @@ export class AmplifyStack extends Stack {
 
     new CfnOutput(this, `${id}-output`, {
       value: app.appId,
-      exportName: 'amplify-app-id',
+      exportName: `${projectName}-amplify-app-id`,
     })
   }
 

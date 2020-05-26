@@ -4,7 +4,7 @@ backend:
     build:
       commands:
         - amplify --version
-        - amplifyPush -e prod --simple
+        - amplifyPush --simple
 frontend:
   phases:
     preBuild:
