@@ -66,6 +66,13 @@
         "resendCode": "Resend code",
         "submit": "Save"
       }
+    },
+    "requireNewPassword": {
+      "header": "Change your password",
+      "errors": {},
+      "actions": {
+        "change": "Change"
+      }
     }
   }
 }

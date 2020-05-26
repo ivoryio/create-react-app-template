@@ -1,9 +1,16 @@
 version: 0.1
+backend:
+  phases:
+    build:
+      commands:
+        - amplify --version
+        - amplifyPush -e prod --simple
 frontend:
   phases:
     preBuild:
       commands:
         - yarn install
+        - yarn i18n
     build:
       commands:
         - yarn build
