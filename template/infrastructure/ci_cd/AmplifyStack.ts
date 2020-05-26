@@ -59,7 +59,13 @@ export class AmplifyStack extends Stack {
       description: `The Web SPA source code for ${projectName}.`,
     }
 
-    return new Repository(this, repositoryName, props)
+    const repo = new Repository(this, repositoryName, props)
+    new CfnOutput(this, `${this.stackName}-repo-output`, {
+      value: repo.repositoryCloneUrlHttp,
+      exportName: `${projectName}-repo-url`,
+    })
+
+    return repo
   }
 
   private createAmplifyApp(projectName: string, sourceCodeProvider?: ISourceCodeProvider) {
@@ -123,19 +129,8 @@ export class AmplifyStack extends Stack {
 
   private createBuildSpec() {
     return BuildSpec.fromObject({
-      version: '0.1',
-      content: `
-version: 0.1
-frontend:
-phases:
-build:
-commands:
-  - # this config is needed by amplify, but it is not used by the build system
-test:
-phases:
-test:
-commands:
-  - # please replace this json object with the yml from 'content' to tell amplify about the tests`,
+      note: 'this config is needed by the Amplify console, but it is not used by the build system',
+      action: 'please replace this with the contents of amplify.yml to tell amplify about the tests',
     })
   }
 }
