@@ -20,7 +20,6 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   if (authState !== 'signedIn') {
     return <Redirect to='/auth' noThrow />
   }
-  // TODO check group/role based permissions
 
   if (Component) {
     return <Component />
