@@ -1,8 +1,8 @@
 import React from 'react'
-import { useForm, Controller } from 'react-hook-form'
-import { TextField, Grid, Container } from '@material-ui/core'
+import { useForm } from 'react-hook-form'
+import { Grid, Container } from '@material-ui/core'
 
-import { Button } from 'app/components'
+import { Button, Input } from 'app/components'
 import { t, i18nKeys } from 'locales/i18n'
 import { FormFooter } from './FormFooter'
 import { FormHeader } from './FormHeader'
@@ -44,35 +44,21 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({
     <form data-testid='forgot-password-send-form' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
         <FormHeader data-testid='reset-password-form-header'>{t(i18nKeys.auth.forgotPassword.headerReset)}</FormHeader>
-        <Controller
-          data-testid='reset-password-code-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='reset-password-code-input'
           rules={{ required: true }}
-          fullWidth
           name='code'
           label={t(i18nKeys.auth.labels.code)}
-          type='text'
-          id='code'
-          as={TextField}
-          autoFocus
           control={control}
         />
-        <Controller
-          data-testid='reset-password-new-password-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='reset-password-new-password-input'
           rules={{ required: true }}
-          fullWidth
           name='password'
           label={t(i18nKeys.auth.labels.newPassword)}
           type='password'
-          id='password'
-          as={TextField}
-          autoFocus
           control={control}
         />
-
         <FormFooter>
           <Button data-testid='reset-password-btn' type='submit' fullWidth>
             {t(i18nKeys.auth.forgotPassword.actions.submit)}

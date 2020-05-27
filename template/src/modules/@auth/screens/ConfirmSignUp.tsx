@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Grid, TextField, Container } from '@material-ui/core'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { Grid, Container } from '@material-ui/core'
 
 import { t, i18nKeys } from 'locales/i18n'
 import { useToast } from 'hooks/useToast'
 
-import { Button } from 'app/components'
+import { Button, Input } from 'app/components'
 import { useConfirmSignUp } from '../hooks'
 import { FormHeader, FormFooter, ChangeAuthStateLink } from '../components'
 
@@ -39,21 +39,14 @@ export const ConfirmSignUp: React.FC = () => {
     <form data-testid='confirmSignUpForm' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
         <FormHeader data-testid='confirm-sign-up-form-header'>{t(authKeys.confirmSignUp.header)}</FormHeader>
-        <Controller
-          data-testid='confirm-sign-up-code-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='confirm-sign-up-code-input'
           rules={{ required: true }}
-          fullWidth
           name='code'
           label={t(authKeys.labels.confirmationCode)}
-          id='code'
           autoComplete='code'
-          autoFocus
-          as={TextField}
           control={control}
         />
-
         <FormFooter>
           <Button data-testid='confirm-sign-up-btn' type='submit' fullWidth>
             {t(authKeys.confirmSignUp.actions.confirm)}

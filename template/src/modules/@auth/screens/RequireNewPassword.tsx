@@ -1,8 +1,8 @@
 import React from 'react'
-import { useForm, Controller } from 'react-hook-form'
-import { TextField, Container } from '@material-ui/core'
+import { useForm } from 'react-hook-form'
+import { Container } from '@material-ui/core'
 
-import { Button } from 'app/components'
+import { Button, Input } from 'app/components'
 import { useToast } from 'hooks/useToast'
 import { t, i18nKeys } from 'locales/i18n'
 import { FormHeader, FormFooter } from '../components'
@@ -34,21 +34,14 @@ export const RequireNewPassword: React.FC = () => {
     <form data-testid='forgot-password-send-form' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
         <FormHeader data-testid='require-new-password-form-header'>{t(i18nKeys.auth.requireNewPassword.header)}</FormHeader>
-        <Controller
-          data-testid='require-password-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='require-password-input'
           rules={{ required: true }}
-          fullWidth
           name='password'
           label={t(i18nKeys.auth.labels.newPassword)}
           type='password'
-          id='password'
-          as={TextField}
-          autoFocus
           control={control}
         />
-
         <FormFooter>
           <Button data-testid='require-new-password-btn' type='submit' fullWidth>
             {t(i18nKeys.auth.requireNewPassword.actions.change)}

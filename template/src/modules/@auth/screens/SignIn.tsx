@@ -1,7 +1,8 @@
 import React from 'react'
-import { useForm, Controller } from 'react-hook-form'
-import { TextField, Button, Grid, Container } from '@material-ui/core'
+import { useForm } from 'react-hook-form'
+import { Grid, Container } from '@material-ui/core'
 
+import { Button, Input } from 'app/components'
 import { t, i18nKeys } from 'locales/i18n'
 import { useToast } from 'hooks/useToast'
 
@@ -48,31 +49,21 @@ export const SignIn: React.FC<SignInProps> = ({
     <form data-testid='signInForm' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
         <FormHeader data-testid='sign-in-form-header'>{t(authKeys.signIn.header)}</FormHeader>
-        <Controller
-          data-testid='sign-in-username-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='sign-in-username-input'
           rules={{ required: true }}
-          fullWidth
           name='email'
           label={t(authKeys.labels.email)}
           type='email'
-          id='email'
-          as={TextField}
           control={control}
         />
-        <Controller
-          data-testid='sign-in-password-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='sign-in-password-input'
           rules={{ required: true }}
-          fullWidth
           name='password'
           label={t(authKeys.labels.password)}
           type='password'
-          id='password'
           autoComplete='current-password'
-          as={TextField}
           control={control}
         />
         <FormFooter>

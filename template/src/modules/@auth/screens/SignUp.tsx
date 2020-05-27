@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Button, Grid, TextField, Container } from '@material-ui/core'
-import { useForm, Controller } from 'react-hook-form'
+import { Grid, Container } from '@material-ui/core'
+import { useForm } from 'react-hook-form'
 
+import { Button, Input } from 'app/components'
 import { t, i18nKeys } from 'locales/i18n'
 import { useToast } from 'hooks/useToast'
 
@@ -40,32 +41,22 @@ export const SignUp: React.FC = () => {
     <form data-testid='signUpForm' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
         <FormHeader data-testid='sign-up-form-header'>{t(authKeys.signUp.header)}</FormHeader>
-        <Controller
-          data-testid='sign-up-username-input'
-          variant='outlined'
-          margin='normal'
-          rules={{ required: true }}
-          fullWidth
+        <Input
+          dataTestId='sign-up-username-input'
           name='email'
           label={t(authKeys.labels.email)}
           type='email'
-          id='email'
-          as={TextField}
           control={control}
-        />
-        <Controller
-          data-testid='sign-up-password-input'
-          variant='outlined'
-          margin='normal'
           rules={{ required: true }}
-          fullWidth
+        />
+        <Input
+          dataTestId='sign-up-password-input'
           name='password'
           label={t(authKeys.labels.password)}
           type='password'
-          id='password'
           autoComplete='current-password'
-          as={TextField}
           control={control}
+          rules={{ required: true }}
         />
         <FormFooter>
           <Button data-testid='sign-up-btn' type='submit' fullWidth variant='contained' color='primary'>

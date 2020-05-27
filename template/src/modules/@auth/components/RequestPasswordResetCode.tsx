@@ -1,8 +1,8 @@
 import React from 'react'
-import { useForm, Controller } from 'react-hook-form'
-import { TextField, Grid, Container } from '@material-ui/core'
+import { useForm } from 'react-hook-form'
+import { Grid, Container } from '@material-ui/core'
 
-import { Button } from 'app/components'
+import { Button, Input } from 'app/components'
 import { t, i18nKeys } from 'locales/i18n'
 import { FormHeader, FormFooter, ChangeAuthStateLink } from '.'
 
@@ -38,17 +38,12 @@ export const RequestPasswordResetCode: React.FC<RequestPasswordResetCodeProps> =
     <form data-testid='forgot-password-send-form' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
         <FormHeader data-testid='request-new-password-form-header'>{t(i18nKeys.auth.forgotPassword.headerRequest)}</FormHeader>
-        <Controller
-          data-testid='request-new-password-email-input'
-          variant='outlined'
-          margin='normal'
+        <Input
+          dataTestId='request-new-password-email-input'
           rules={{ required: true }}
-          fullWidth
           name='email'
           label={t(i18nKeys.auth.labels.email)}
           type='email'
-          id='email'
-          as={TextField}
           control={control}
         />
         <FormFooter>
