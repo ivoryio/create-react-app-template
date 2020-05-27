@@ -47,8 +47,9 @@ export const SignIn: React.FC<SignInProps> = ({
   return (
     <form data-testid='signInForm' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
-        <FormHeader>{t(authKeys.signIn.header)}</FormHeader>
+        <FormHeader data-testid='sign-in-form-header'>{t(authKeys.signIn.header)}</FormHeader>
         <Controller
+          data-testid='sign-in-username-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -61,6 +62,7 @@ export const SignIn: React.FC<SignInProps> = ({
           control={control}
         />
         <Controller
+          data-testid='sign-in-password-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -75,11 +77,11 @@ export const SignIn: React.FC<SignInProps> = ({
         />
         <FormFooter>
           <Button
+            data-testid='sign-in-btn'
             type='submit'
             fullWidth
             color='primary'
             variant='contained'
-            data-testid='signInSubmit'
           >
             {t(authKeys.signIn.actions.signIn)}
           </Button>

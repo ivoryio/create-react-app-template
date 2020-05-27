@@ -43,8 +43,9 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({
   return (
     <form data-testid='forgot-password-send-form' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
-        <FormHeader>{t(i18nKeys.auth.forgotPassword.headerReset)}</FormHeader>
+        <FormHeader data-testid='reset-password-form-header'>{t(i18nKeys.auth.forgotPassword.headerReset)}</FormHeader>
         <Controller
+          data-testid='reset-password-code-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -58,6 +59,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({
           control={control}
         />
         <Controller
+          data-testid='reset-password-new-password-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -72,7 +74,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({
         />
 
         <FormFooter>
-          <Button type='submit' fullWidth>
+          <Button data-testid='reset-password-btn' type='submit' fullWidth>
             {t(i18nKeys.auth.forgotPassword.actions.submit)}
           </Button>
           <Grid container>

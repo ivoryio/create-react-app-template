@@ -8,7 +8,7 @@ export const DashboardScreen: React.FC = () => {
   return (
     <>
       <div>{t(i18nKeys.dashboard.loggedIn)}</div>
-      <Button onClick={() => signOut()}>{t(i18nKeys.global.signOut)}</Button>
+      <Button data-testid='sign-out-btn' onClick={() => signOut()}>{t(i18nKeys.global.signOut)}</Button>
     </>
   )
 }

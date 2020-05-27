@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components'
 import { LockOutlined } from '@material-ui/icons'
 import { Avatar as _Avatar, Typography, Box as _Box } from '@material-ui/core'
 
-export const FormHeader: React.FC = ({ children }: React.PropsWithChildren<{}>) => {
+export const FormHeader: React.FC = ({ children, ...props }: React.PropsWithChildren<{}>) => {
   return (
-    <Box>
+    <Box {...props}>
       <Avatar>
         <LockOutlined />
       </Avatar>

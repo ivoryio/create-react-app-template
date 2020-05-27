@@ -9,7 +9,9 @@
       "lint": "eslint './src/**/*.{ts,tsx}'",
       "i18n": "node src/locales/flattenKeys.js",
       "styleguide": "styleguidist server --open",
-      "styleguide:build": "styleguidist build"
+      "styleguide:build": "styleguidist build",
+      "cypress:open": "cypress open",
+      "cypress:headless": "cypress run"
     },
     "dependencies": {
       "@aws-amplify/auth": "^3.2.7",

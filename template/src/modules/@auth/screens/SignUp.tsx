@@ -39,8 +39,9 @@ export const SignUp: React.FC = () => {
   return (
     <form data-testid='signUpForm' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
-        <FormHeader>{t(authKeys.signUp.header)}</FormHeader>
+        <FormHeader data-testid='sign-up-form-header'>{t(authKeys.signUp.header)}</FormHeader>
         <Controller
+          data-testid='sign-up-username-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -53,6 +54,7 @@ export const SignUp: React.FC = () => {
           control={control}
         />
         <Controller
+          data-testid='sign-up-password-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -66,7 +68,7 @@ export const SignUp: React.FC = () => {
           control={control}
         />
         <FormFooter>
-          <Button type='submit' fullWidth variant='contained' color='primary'>
+          <Button data-testid='sign-up-btn' type='submit' fullWidth variant='contained' color='primary'>
             {t(authKeys.signUp.actions.create)}
           </Button>
           <Grid container>

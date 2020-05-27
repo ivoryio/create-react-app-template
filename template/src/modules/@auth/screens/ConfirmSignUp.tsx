@@ -38,8 +38,9 @@ export const ConfirmSignUp: React.FC = () => {
   return (
     <form data-testid='confirmSignUpForm' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
-        <FormHeader>{t(authKeys.confirmSignUp.header)}</FormHeader>
+        <FormHeader data-testid='confirm-sign-up-form-header'>{t(authKeys.confirmSignUp.header)}</FormHeader>
         <Controller
+          data-testid='confirm-sign-up-code-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -54,7 +55,7 @@ export const ConfirmSignUp: React.FC = () => {
         />
 
         <FormFooter>
-          <Button type='submit' fullWidth>
+          <Button data-testid='confirm-sign-up-btn' type='submit' fullWidth>
             {t(authKeys.confirmSignUp.actions.confirm)}
           </Button>
           <Grid container>

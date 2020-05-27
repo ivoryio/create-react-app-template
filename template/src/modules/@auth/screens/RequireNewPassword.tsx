@@ -33,8 +33,9 @@ export const RequireNewPassword: React.FC = () => {
   return (
     <form data-testid='forgot-password-send-form' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
-        <FormHeader>{t(i18nKeys.auth.requireNewPassword.header)}</FormHeader>
+        <FormHeader data-testid='require-new-password-form-header'>{t(i18nKeys.auth.requireNewPassword.header)}</FormHeader>
         <Controller
+          data-testid='require-password-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -49,7 +50,7 @@ export const RequireNewPassword: React.FC = () => {
         />
 
         <FormFooter>
-          <Button type='submit' fullWidth>
+          <Button data-testid='require-new-password-btn' type='submit' fullWidth>
             {t(i18nKeys.auth.requireNewPassword.actions.change)}
           </Button>
         </FormFooter>

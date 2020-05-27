@@ -37,8 +37,9 @@ export const RequestPasswordResetCode: React.FC<RequestPasswordResetCodeProps> =
   return (
     <form data-testid='forgot-password-send-form' onSubmit={handleSubmit(onSubmit)}>
       <Container maxWidth='xs'>
-        <FormHeader>{t(i18nKeys.auth.forgotPassword.headerRequest)}</FormHeader>
+        <FormHeader data-testid='request-new-password-form-header'>{t(i18nKeys.auth.forgotPassword.headerRequest)}</FormHeader>
         <Controller
+          data-testid='request-new-password-email-input'
           variant='outlined'
           margin='normal'
           rules={{ required: true }}
@@ -51,7 +52,7 @@ export const RequestPasswordResetCode: React.FC<RequestPasswordResetCodeProps> =
           control={control}
         />
         <FormFooter>
-          <Button type='submit' fullWidth>
+          <Button data-testid='request-password-reset-code-btn' type='submit' fullWidth>
             {t(i18nKeys.auth.forgotPassword.actions.sendCode)}
           </Button>
           <Grid container>
