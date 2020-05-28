@@ -25,7 +25,7 @@ export class AmplifyStack extends Stack {
 
     const { projectName } = props
 
-    const provider = this.makeSourceCodeProvider(projectName, 'codecommit')
+    const provider = this.makeSourceCodeProvider(projectName, 'GIT_PROVIDER')
     const app = this.createAmplifyApp(projectName, provider)
 
     new CfnOutput(this, `${id}-output`, {
