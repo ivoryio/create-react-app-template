@@ -73,6 +73,7 @@ export class AmplifyStack extends Stack {
       sourceCodeProvider,
       environmentVariables: {
         USER_DISABLE_TESTS: 'false',
+        _LIVE_UPDATES: '[{"pkg":"@aws-amplify/cli","type":"npm","version":"latest"}]',
       },
       role: this.createRole(projectName),
       buildSpec: this.createBuildSpec(),
@@ -130,7 +131,8 @@ export class AmplifyStack extends Stack {
   private createBuildSpec() {
     return BuildSpec.fromObject({
       note: 'this config is needed by the Amplify console, but it is not used by the build system',
-      action: 'please replace this with the contents of amplify.yml to tell amplify about the tests',
+      action:
+        'please replace this with the contents of amplify.yml to tell amplify about the tests',
     })
   }
 }
