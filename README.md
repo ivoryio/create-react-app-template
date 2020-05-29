@@ -16,14 +16,11 @@ What this template has to offer:
 
 # Ivory Project Folder Structure
 
-root                  
-   ├ amplify - amplify resources
-
-   ├ cypress - E2E tests folder
-
-   ├ infrastructure - codecommit resources
-   
-   ├ public - contains root index.html file. Normally we recommend importing [stylesheets](https://create-react-app.dev/docs/adding-a-stylesheet), [images, and fonts](https://create-react-app.dev/docs/adding-images-fonts-and-files) from JavaScript.
+root                
+   ├ amplify - amplify resources  
+   ├ cypress - E2E tests folder  
+   ├ infrastructure - codecommit resources  
+   ├ public - contains root index.html file. Normally we recommend importing [stylesheets](https://create-react-app.dev/docs/adding-a-stylesheet), [images, and fonts](https://create-react-app.dev/docs/adding-images-fonts-and-files) from JavaScript.  
    └─ src  
    
       ├─ app
