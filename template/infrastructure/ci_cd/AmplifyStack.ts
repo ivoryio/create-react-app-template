@@ -95,14 +95,14 @@ export class AmplifyStack extends Stack {
               effect: Effect.ALLOW,
               actions: ['cloudformation:*'],
               resources: [
-                `arn:aws:cloudformation:${this.region}:371148846105:stackset/*:*`,
-                `arn:aws:cloudformation:${this.region}:371148846105:stack/*/*`,
+                `arn:aws:cloudformation:${this.region}:${this.account}:stackset/*:*`,
+                `arn:aws:cloudformation:${this.region}:${this.account}:stack/*/*`,
               ],
             }),
             new PolicyStatement({
               effect: Effect.ALLOW,
               actions: ['iam:*'],
-              resources: ['arn:aws:iam::371148846105:role/*'],
+              resources: ['arn:aws:iam::${this.account}:role/*'],
             }),
             new PolicyStatement({
               effect: Effect.ALLOW,
@@ -113,8 +113,8 @@ export class AmplifyStack extends Stack {
               effect: Effect.ALLOW,
               actions: ['cognito-idp:*', 'cognito-identity:*'],
               resources: [
-                `arn:aws:cognito-identity:${this.region}:371148846105:identitypool/*`,
-                `arn:aws:cognito-idp:${this.region}:371148846105:userpool/*`,
+                `arn:aws:cognito-identity:${this.region}:${this.account}:identitypool/*`,
+                `arn:aws:cognito-idp:${this.region}:${this.account}:userpool/*`,
               ],
             }),
             new PolicyStatement({

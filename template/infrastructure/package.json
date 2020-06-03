@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "watch": "tsc -w",
-    "build": "rm -rf ./build && tsc",
+    "build": "rm -rf ./build && yarn tsc",
     "deploy": "yarn build && yarn cdk:deploy",
     "nuke": "cdk destroy --app 'node build/app.js' PROJECT_NAME --output 'build/cdk.out' --profile AWS_PROFILE",
     "cdk:deploy": "cdk deploy --app 'node build/app.js' PROJECT_NAME --output 'build/cdk.out' --strict --profile AWS_PROFILE",
