@@ -102,7 +102,7 @@ export class AmplifyStack extends Stack {
             new PolicyStatement({
               effect: Effect.ALLOW,
               actions: ['iam:*'],
-              resources: ['arn:aws:iam::${this.account}:role/*'],
+              resources: [`arn:aws:iam::${this.account}:role/*`],
             }),
             new PolicyStatement({
               effect: Effect.ALLOW,
