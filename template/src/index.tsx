@@ -11,7 +11,14 @@ if (process.env.NODE_ENV === 'development') {
   Amplify.Logger.LOG_LEVEL = 'DEBUG'
 }
 
-Amplify.configure(awsConfig)
+Amplify.configure({
+  ...awsConfig,
+  oauth: {
+    ...awsConfig.oauth,
+    ...getRedirectUrls(),
+  },
+})
+
 initializeTranslations()
 
 ReactDOM.render(
@@ -25,3 +32,16 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
+
+function getRedirectUrls() {
+  const { host } = window.location
+  const byHost = (url: string) => new URL(url).host === host
+
+  const redirectSignInOptions = awsConfig.oauth.redirectSignIn.split(',')
+  const redirect = redirectSignInOptions.find(byHost)
+
+  return {
+    redirectSignIn: redirect,
+    redirectSignOut: redirect,
+  }
+}

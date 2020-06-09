@@ -16,6 +16,7 @@
   "features": {
     "ui": "UI, components and theming",
     "i18n": "Internationalization",
+    "auth": "User authentication",
     "codeQuality": "Code quality tools"
   },
   "auth": {

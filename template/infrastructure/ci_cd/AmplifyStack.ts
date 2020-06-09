@@ -25,7 +25,7 @@ export class AmplifyStack extends Stack {
 
     const { projectName } = props
 
-    const provider = this.makeSourceCodeProvider(projectName, 'GIT_PROVIDER')
+    const provider = this.makeSourceCodeProvider(projectName)
     const app = this.createAmplifyApp(projectName, provider)
 
     new CfnOutput(this, `${id}-output`, {
@@ -34,8 +34,8 @@ export class AmplifyStack extends Stack {
     })
   }
 
-  private makeSourceCodeProvider(projectName: string, gitPlatform: GitPlatform) {
-    switch (gitPlatform) {
+  private makeSourceCodeProvider(projectName: string) {
+    switch (this.gitPlatform) {
       case 'codecommit':
         return new CodeCommitSourceCodeProvider({
           repository: this.createCodeRepository(projectName),
@@ -78,7 +78,9 @@ export class AmplifyStack extends Stack {
       role: this.createRole(projectName),
       buildSpec: this.createBuildSpec(),
     })
-    app.addBranch('master')
+    if (this.gitPlatform !== 'other') {
+      app.addBranch('master')
+    }
     app.addCustomRule(CustomRule.SINGLE_PAGE_APPLICATION_REDIRECT)
 
     return app
@@ -135,4 +137,6 @@ export class AmplifyStack extends Stack {
         'please replace this with the contents of amplify.yml to tell amplify about the tests',
     })
   }
+
+  private readonly gitPlatform: GitPlatform = 'GIT_PROVIDER'
 }
