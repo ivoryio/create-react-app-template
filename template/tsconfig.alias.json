@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@shared-utils": ["./packages/@shared-utils"]
+      "@auth": [ "./modules/@auth" ]
     }
   }
 }

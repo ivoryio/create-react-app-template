@@ -1,7 +1,6 @@
-[
-  {
-    "username": "john",
-    "firstName": "John",
-    "lastName": "Doe"
-  }
-]
+{
+  "password": "MyPassword1234!",
+  "newPassword": "MyNewPassword123!",
+  "firstName": "John",
+  "lastName": "Doe"
+}
