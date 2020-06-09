@@ -1,9 +1,8 @@
 # cra-template-ivory
 
-This is the official @ivoryio create-react-app template 
+This is the official @ivoryio template 
 
-Run the following command to create a new project based on this template:
-`yarn create react-app --template @ivoryio <project-name>`
+It could be used with create-react-app, but it's meant to be used by the [ivory-cli](https://www.npmjs.com/package/@ivoryio/ivory-cli) with `ivory create`
 
 What this template has to offer:
 * infrastructure-as-code for creating a AWS Codecommit repo and an Amplify app (which offers CI/CD and hosting)
