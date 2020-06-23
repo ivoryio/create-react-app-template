@@ -2,7 +2,8 @@
   "global": {
     "showToast": "Show toast",
     "infoToast": "This is an info toast",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "save": "Save"
   },
   "home": {
     "hello": "Hello",
